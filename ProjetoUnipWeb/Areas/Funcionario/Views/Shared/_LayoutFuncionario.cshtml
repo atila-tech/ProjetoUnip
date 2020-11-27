@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@*CONTEUDO*@
+
+<div class="col-md-12 main-body" role="main">
+    @RenderBody()
+</div>
+
+@*FIM CONTEUDO*@
+
+@*@RenderSection("script", false)*@
+@RenderSection("scripts", required: false)

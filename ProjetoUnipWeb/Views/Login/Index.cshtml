@@ -1,0 +1,149 @@
+﻿@model ProjetoUnipWeb.Models.AccountViewModel
+
+@{
+    ViewBag.Title = "Acesso ao sistema";
+}
+
+@using (Ajax.BeginForm("Login", "Login", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    //OnBegin = "$('.btn-warning').button('loading');",
+    OnBegin = "carregaButton",
+    OnSuccess = "autenticaLogin",
+    OnFailure = "falhaLogin"
+}, new { @role = "form", @class = "form-horizontal" }))
+{
+    <h2>Acesso ao sistema</h2>
+    @*@using (Html.BeginForm("Login", "Login", FormMethod.Post))*@
+    //cria a tag do formulário
+    @Html.AntiForgeryToken() // previne o ataque CSRF
+    @Html.ValidationSummary(true)
+
+
+<div class="form-horizontal">
+    <h4></h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Login, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.PasswordFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <a id="btnLogin" button class="btn btn-warning load1" onclick="submitLogin();">
+            @*<span class="glyphicon glyphicon-share-alt"></span>*@
+            Entrar
+        </a>
+    </div>
+</div>
+
+    @*<table>
+        <tr>
+            <td>@Html.LabelFor(a => a.Login)</td>
+            <td>@Html.TextBoxFor(a => a.Login)</td>
+            <td>@Html.ValidationMessageFor(a => a.Login)</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(a => a.Senha)</td>
+            <td> @Html.PasswordFor(a => a.Senha) </td>
+            <td> @Html.ValidationMessageFor(a => a.Senha) </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <div class="col-md-8">
+                    <a id="btnLogin" data-loading-text="Aguarde..." class="btn btn-warning" onclick="submitLogin();">
+                        <span class="glyphicon glyphicon-share-alt"></span>
+                        Entrar
+                    </a>
+                </div>
+
+            </td>
+            <td></td>
+        </tr>
+    </table>*@
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            
+        });
+
+        //Evento Click
+        //$('#btnLogin').click(function () {
+        //    $('#btnLogin').html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Loading...').addClass('disabled');
+        //});
+
+        //Evento Click
+        //$('.load1').click(function () {
+        //    var _this = $(this) //click button
+        //    var existingHTML = _this.html() //store exiting button HTML
+        //    //Add loading message and spinner
+        //    $(_this).html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Carregando...').addClass('disabled')
+
+        //    //setTimeout(function () {
+        //    //    $(_this).html(existingHTML).prop('disabled', false) //show original HTML and enable
+        //    //}, 3000) //3 seconds
+        //});
+        
+        function carregaButton() {
+            $('#btnLogin').html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Loading...').addClass('disabled');
+        }
+
+        function autenticaLogin(data, status, xhr) {
+            //$(_this).html(existingHTML).prop('disabled', false); //show original HTML and enable
+            $('#btnLogin').html('Entrar').removeClass('disabled')
+            if (data.ret == -1) {
+                alert(data.msg);
+                return false;
+            }
+
+            $(location).attr('href', '' + data.urlRedirection + '');
+        }
+
+        function falhaLogin() {
+            alert("Ocorreu um erro inesperado!");
+        } 
+
+        function submitLogin() {
+            //alert("acessou");
+            //var f = $("form").find(":input");
+            //var err = 0;
+            //var idFocus = '';
+
+            //for (var i = 0; i < f.length; i++) {
+            //    $(f[i]).css('background-color', '#fff');
+            //    if (f[i].value == '' && f[i].id != "recuperaSenha") {
+            //        $(f[i]).css('background-color', '#f2dede');
+            //        err++;
+            //        if (idFocus == '') idFocus = f[i].id;
+            //    }
+            //}
+            //if (err > 0) {
+            //    $("#" + idFocus).focus();
+            //    return false;
+            //}
+            
+            $("form").submit();
+        }
+
+    </script>
+}
+

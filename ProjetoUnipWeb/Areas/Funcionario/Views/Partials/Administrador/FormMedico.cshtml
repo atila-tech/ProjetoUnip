@@ -1,0 +1,253 @@
+﻿@model ProjetoUnipWeb.Models.Cadastros.MedicoViewModel
+
+@{
+    ViewBag.Title = "Médicos";
+    var itensSituacao = new List<SelectListItem> { new SelectListItem { Value = "True", Text = "Ativo" }, new SelectListItem { Value = "False", Text = "Inativo" } };
+    var itensCargo = new List<SelectListItem> { new SelectListItem { Value = "1", Text = "Atendente" }, new SelectListItem { Value = "2", Text = "Técnico em Enfermagem" }, new SelectListItem { Value = "3", Text = "Técnico Administrativo" } };
+    long idMedico = Model == null ? 0 : Model.Id;
+    bool novo = idMedico == 0;
+    bool ativo = novo ? true : Model.Pessoa.Usuario == null ? false : Model.Pessoa.Usuario.Ativo;
+}
+
+
+@using (Ajax.BeginForm("SalvarMedico", "Administrador", new { Area = "Funcionario" }, new AjaxOptions
+{
+    HttpMethod = "POST",
+    //OnBegin = "$('.btn-warning').button('loading');",
+    OnBegin = "carregaButton",
+    OnSuccess = "salvarAdmMedico",
+    OnFailure = "falhaMedico"
+}, new
+{
+    @role = "form",
+    @class = "form-horizontal",
+    id = "form-teste"
+}
+))
+{
+    @*@Html.AntiForgeryToken()*@
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(f => f.Id)
+    @Html.HiddenFor(f => f.Pessoa.UsuarioId)
+    @*@Html.HiddenFor(f => f.Pessoa.DataCriacao = DateTime.Now)*@
+
+
+
+    <div class="modal-header">
+        <div class="pull-right" style="width: 30px; height: 30px;">
+            @*@{Html.RenderPartial(Url.Content("~/Views/Partials/Loading.cshtml"), "loading-form");}*@
+        </div>
+        <h4 class="modal-title" id="formFuncionario">Médico</h4>
+    </div>
+    <div class="modal-body" style="padding-bottom: 0;">
+
+        @*<div class="form-horizontal">*@
+        <div class="row">
+            @*<label class="col-xs-2 input-sm">Ativar/Inativar</label>*@
+            <div class="col-xs-2" style="max-height:15px; margin-top: 0.5%; margin-left:7px;">
+                @*<label class="switch">
+                        <input type="checkbox" id="checkAtivoAux" onchange="changeSituacao($(this).is(':checked'))" />
+                        <span class="slider round"></span>
+                    </label>*@
+                @*<a id="btnSituacaoAtivo" class="btn btn-success btn-sm" onclick="changeSituacao('False');"><span class="glyphicon glyphicon-ok"></span>&nbsp;Ativo</a>
+                    <a id="btnSituacaoInativo" class="btn btn-danger btn-sm hide" onclick="changeSituacao('True');"><span class="glyphicon glyphicon-remove"></span>&nbsp;Inativo</a>*@
+                @Html.DropDownListFor(v => v.Pessoa.Usuario.Ativo, itensSituacao, new { @class = "input-sm form-control hide" })
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Pessoa.Usuario.Login, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Pessoa.Usuario.Login, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Pessoa.Usuario.Login, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Pessoa.Usuario.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(model => model.Pessoa.Usuario.Senha, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Pessoa.Usuario.Senha, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Pessoa.Usuario.ConfirmacaoSenha, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(model => model.Pessoa.Usuario.ConfirmacaoSenha, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Pessoa.Usuario.ConfirmacaoSenha, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Pessoa.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Pessoa.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Pessoa.Nome, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Pessoa.Rg, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Pessoa.Rg, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Pessoa.Rg, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Pessoa.Cpf, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Pessoa.Cpf, new { id = "Cpf", htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Pessoa.Cpf, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Pessoa.DataNascimento, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Pessoa.DataNascimento, new { id = "DataNascimento", htmlAttributes = new { @class = "form-control default-date-picker" } })
+                    @Html.ValidationMessageFor(model => model.Pessoa.DataNascimento, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Pessoa.Usuario.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Pessoa.Usuario.Email, new { id = "Email", htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Pessoa.Usuario.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Salario, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Salario, new { id = "Salario", htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Salario, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+            @*</div>*@
+        </div>
+
+        @*<label class="col-xs-2 input-sm">Cargo</label>
+        @Html.DropDownListFor(v => v.CargoId, itensCargo, new { @class = "input-sm form-control hide" })*@
+
+
+        <div class="modal-footer">
+            <div id="msgCadFuncionario" class="alert pull-left" style="margin: -2.5% 0; display: none;">
+                <strong></strong>
+            </div>
+
+            <a class="btn btn-danger btn-sm" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>&nbsp;Cancelar</a>
+            @*<a id="btnSalvarFuncionario" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-ok"></span>&nbsp;Salvar</a>*@
+
+            <a id="btnCadastra" button class="btn btn-primary btn-sm load1" onclick="submitCadastra();">
+                @*<span class="glyphicon glyphicon-share-alt"></span>*@
+                Salvar
+            </a>
+
+
+        </div>
+    </div>
+}
+
+
+
+@Scripts.Render("~/bundles/jqueryval")
+@*@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")*@
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery-mask-plugin-master/src/jquery.mask.js" type="text/javascript" asp-append-version="true"></script>
+
+<script type="text/javascript">
+    $("#checkAtivoAux").prop("checked", @ativo.ToString().ToLower());
+        changeSituacao(@ativo.ToString().ToLower());
+
+    //$('#Cpf').mask('000.000.000-00', { placeholder: "___.___.___-__" });
+    $('#Cpf').mask('000.000.000-00', { placeholder: "___.___.___-__" });
+    $('#DataNascimento').mask('00/00/0000');
+    $('#Salario').mask("#.##0,00", { reverse: true });
+
+    $(function () {
+
+    });
+
+    function changeSituacao(situacao) {
+        if (situacao)
+            $("#Pessoa_Usuario_Ativo").val("True");
+        else
+            $("#Pessoa_Usuario_Ativo").val("False");
+    }
+
+    //Evento Click
+    //$('#btnLogin').click(function () {
+    //    $('#btnLogin').html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Loading...').addClass('disabled');
+    //});
+
+    //Evento Click
+    //$('.load1').click(function () {
+    //    var _this = $(this) //click button
+    //    var existingHTML = _this.html() //store exiting button HTML
+    //    //Add loading message and spinner
+    //    $(_this).html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Carregando...').addClass('disabled')
+
+    //    //setTimeout(function () {
+    //    //    $(_this).html(existingHTML).prop('disabled', false) //show original HTML and enable
+    //    //}, 3000) //3 seconds
+    //});
+
+    function carregaButton() {
+        $('#btnCadastra').html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Loading...').addClass('disabled');
+    }
+
+    function salvarAdmMedico(data, status, xhr) {
+        //$(_this).html(existingHTML).prop('disabled', false); //show original HTML and enable
+        //$('#btnCadastra').html('Salvar').removeClass('disabled')
+        setTimeout(function () { $('#btnCadastra').html('Salvar').removeClass('disabled') }, '2500');
+        if (data.ret == -1) {
+            alert(data.msg);
+            return false;
+        }
+
+        //alert(data.msg);
+        setTimeout(function () { $("#mdFormFuncionario").modal('hide') }, '1000');
+        //$(location).attr('href', '' + data.urlRedirection + '');
+    }
+
+    function falhaMedico() {
+        alert("Ocorreu um erro inesperado!");
+    }
+
+    function submitCadastra() {
+        //alert("acessou");
+        //var f = $("form").find(":input");
+        //var err = 0;
+        //var idFocus = '';
+
+        //for (var i = 0; i < f.length; i++) {
+        //    $(f[i]).css('background-color', '#fff');
+        //    if (f[i].value == '' && f[i].id != "recuperaSenha") {
+        //        $(f[i]).css('background-color', '#f2dede');
+        //        err++;
+        //        if (idFocus == '') idFocus = f[i].id;
+        //    }
+        //}
+        //if (err > 0) {
+        //    $("#" + idFocus).focus();
+        //    return false;
+        //}
+
+        $("#form-teste").submit();
+        //$("form").submit();
+    }
+
+</script>
+

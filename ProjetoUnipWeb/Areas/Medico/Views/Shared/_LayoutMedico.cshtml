@@ -1,0 +1,14 @@
+﻿@using System.Configuration;
+@using System.Globalization
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@*CONTEUDO*@
+<div class="col-md-12 main-body" role="main">
+    @RenderBody()
+</div>
+@*FIM CONTEUDO*@
+
+@RenderSection("script", false)

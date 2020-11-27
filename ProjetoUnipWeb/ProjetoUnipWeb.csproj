@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{39325B97-FE63-4B4E-9EB9-E2836BC4D32B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjetoUnipWeb</RootNamespace>
+    <AssemblyName>ProjetoUnipWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44341</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.8</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RestSharp, Version=106.11.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.11.7\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Funcionario\Controllers\AdministradorController.cs" />
+    <Compile Include="Areas\Funcionario\Controllers\IndexController.cs" />
+    <Compile Include="Areas\Funcionario\FuncionarioAreaRegistration.cs" />
+    <Compile Include="Areas\Medico\Controllers\IndexController.cs" />
+    <Compile Include="Areas\Medico\MedicoAreaRegistration.cs" />
+    <Compile Include="Areas\Paciente\Controllers\IndexController.cs" />
+    <Compile Include="Areas\Paciente\PacienteAreaRegistration.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModel.cs" />
+    <Compile Include="Models\Cadastros\CargoViewModel.cs" />
+    <Compile Include="Models\Cadastros\EnderecoViewModel.cs" />
+    <Compile Include="Models\Cadastros\EspecialidadeViewModel.cs" />
+    <Compile Include="Models\Cadastros\FuncionarioViewModel.cs" />
+    <Compile Include="Models\Cadastros\MedicoViewModel.cs" />
+    <Compile Include="Models\Cadastros\PacienteViewModel.cs" />
+    <Compile Include="Models\Cadastros\PerfilViewModel.cs" />
+    <Compile Include="Models\Cadastros\PessoaViewModel.cs" />
+    <Compile Include="Models\Cadastros\UsuarioViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\dataTables\docs\media\js\doc.js" />
+    <Content Include="Scripts\dataTables\docs\media\js\jquery.js" />
+    <Content Include="Scripts\dataTables\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\dataTables\docs\media\js\shCore.js" />
+    <Content Include="Scripts\dataTables\extras\AutoFill\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\dataTables\extras\AutoFill\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\dataTables\extras\AutoFill\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\dataTables\extras\AutoFill\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\dataTables\extras\AutoFill\media\js\AutoFill.js" />
+    <Content Include="Scripts\dataTables\extras\AutoFill\media\js\AutoFill.min.js" />
+    <Content Include="Scripts\dataTables\extras\ColReorder\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\dataTables\extras\ColReorder\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\dataTables\extras\ColReorder\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\dataTables\extras\ColReorder\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\dataTables\extras\ColReorder\media\js\ColReorder.js" />
+    <Content Include="Scripts\dataTables\extras\ColReorder\media\js\ColReorder.min.js" />
+    <Content Include="Scripts\dataTables\extras\ColVis\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\dataTables\extras\ColVis\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\dataTables\extras\ColVis\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\dataTables\extras\ColVis\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\dataTables\extras\ColVis\media\js\ColVis.js" />
+    <Content Include="Scripts\dataTables\extras\ColVis\media\js\ColVis.min.js" />
+    <Content Include="Scripts\dataTables\extras\FixedColumns\docs\media\js\doc.js" />
+    <Content Include="Scripts\dataTables\extras\FixedColumns\docs\media\js\jquery.js" />
+    <Content Include="Scripts\dataTables\extras\FixedColumns\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\dataTables\extras\FixedColumns\docs\media\js\shCore.js" />
+    <Content Include="Scripts\dataTables\extras\FixedColumns\media\js\FixedColumns.js" />
+    <Content Include="Scripts\dataTables\extras\FixedColumns\media\js\FixedColumns.min.js" />
+    <Content Include="Scripts\dataTables\extras\Scroller\media\docs\media\js\doc.js" />
+    <Content Include="Scripts\dataTables\extras\Scroller\media\docs\media\js\jquery.js" />
+    <Content Include="Scripts\dataTables\extras\Scroller\media\docs\media\js\shBrushJScript.js" />
+    <Content Include="Scripts\dataTables\extras\Scroller\media\docs\media\js\shCore.js" />
+    <Content Include="Scripts\dataTables\extras\Scroller\media\js\dataTables.scroller.js" />
+    <Content Include="Scripts\dataTables\extras\Scroller\media\js\dataTables.scroller.min.js" />
+    <Content Include="Scripts\dataTables\extras\TableTools\media\js\TableTools.js" />
+    <Content Include="Scripts\dataTables\extras\TableTools\media\js\TableTools.min.js" />
+    <Content Include="Scripts\dataTables\extras\TableTools\media\js\ZeroClipboard.js" />
+    <Content Include="Scripts\dataTables\media\js\dataTables.bootstrap.js" />
+    <Content Include="Scripts\dataTables\media\js\dataTables.buttons.min.js" />
+    <Content Include="Scripts\dataTables\media\js\jeditable.js" />
+    <Content Include="Scripts\dataTables\media\js\jquery.dataTables.js" />
+    <Content Include="Scripts\dataTables\media\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\dataTables\media\js\jquery.dataTables.min.new.js" />
+    <Content Include="Scripts\dataTables\media\js\jquery.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\Funcionarios\Funcionario.js" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Areas\Funcionario\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Funcionario\Views\Shared\_LayoutFuncionario.cshtml" />
+    <Content Include="Areas\Funcionario\Views\Index\Index.cshtml" />
+    <Content Include="Areas\Funcionario\Views\Web.config" />
+    <Content Include="Areas\Medico\Web.config" />
+    <Content Include="Areas\Paciente\Web.config" />
+    <Content Include="Areas\Medico\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Medico\Views\Shared\_LayoutMedico.cshtml" />
+    <Content Include="Areas\Medico\Views\Index\Index.cshtml" />
+    <Content Include="Areas\Paciente\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Paciente\Views\Shared\_LayoutPaciente.cshtml" />
+    <Content Include="Areas\Paciente\Views\Index\Index.cshtml" />
+    <Content Include="Areas\Funcionario\Views\Administrador\Funcionario.cshtml" />
+    <Content Include="Areas\Funcionario\Views\Administrador\Medico.cshtml" />
+    <Content Include="Areas\Funcionario\Views\Administrador\Paciente.cshtml" />
+    <Content Include="Areas\Funcionario\Views\Partials\Administrador\FormFuncionario.cshtml" />
+    <Content Include="Areas\Funcionario\Views\Partials\Administrador\FormMedico.cshtml" />
+    <Content Include="Areas\Funcionario\Views\Partials\Administrador\FormPaciente.cshtml" />
+    <Content Include="Scripts\dataTables\extras\AutoFill\media\js\AutoFill.min.js.gz" />
+    <Content Include="Scripts\dataTables\extras\ColReorder\media\js\ColReorder.min.js.gz" />
+    <Content Include="Scripts\dataTables\extras\ColVis\media\js\ColVis.min.js.gz" />
+    <Content Include="Scripts\dataTables\extras\FixedColumns\media\js\FixedColumns.min.js.gz" />
+    <Content Include="Scripts\dataTables\extras\Scroller\media\js\dataTables.scroller.min.js.gz" />
+    <Content Include="Scripts\dataTables\extras\TableTools\media\js\TableTools.min.js.gz" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\.gitignore" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\.jshintrc" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\.ruby-version" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\.travis.yml" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\bower.json" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\CHANGELOG.md" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\component.json" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\composer.json" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\CONTRIBUTING.md" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\deploy.rb" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\docker-compose.yml" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\Dockerfile" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\ISSUE_TEMPLATE.md" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\LICENSE" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\package-lock.json" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\package.json" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\README.md" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\dist\jquery.mask.js" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\dist\jquery.mask.min.js" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\Gruntfile.js" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\package.js" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\src\jquery.mask.js" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\test\jquery.mask.test.js" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\test\qunit.css" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\test\qunit.js" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\test\sinon-1.10.3.js" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\test\sinon-qunit-1.0.0.js" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\test\sinon-qunit.js" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\test\test-for-jquery-1.11.1.html" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\test\test-for-jquery-1.7.2.html" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\test\test-for-jquery-1.8.3.html" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\test\test-for-jquery-1.9.1.html" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\test\test-for-jquery-2.1.1.html" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\test\test-for-jquery-3.0.0.html" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\test\test-for-zepto.html" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\test\zepto\data.js" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\test\zepto\event.js" />
+    <Content Include="Scripts\jQuery-Mask-Plugin-master\test\zepto\zepto.min.js" />
+    <Content Include="Scripts\jquery.inputmask\inputmask.date.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\inputmask.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\inputmask.js" />
+    <Content Include="Scripts\jquery.inputmask\inputmask.numeric.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\inputmask.phone.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\inputmask.regex.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjetoUnipWeb.Domain\ProjetoUnipWeb.Domain.csproj">
+      <Project>{a0285f1a-01a7-478e-bf5b-c4e60b0f2806}</Project>
+      <Name>ProjetoUnipWeb.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64661</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44341/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
